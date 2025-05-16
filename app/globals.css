@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .animate-in {
+    animation: animateIn 0.3s ease-in-out;
+  }
+
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Gradient backgrounds with dark mode support */
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(221, 83%, 53%, 0.1) 0%, hsl(221, 83%, 53%, 0.05) 100%);
+  }
+
+  .dark .gradient-bg {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(3, 7, 18, 1) 100%);
+  }
+
+  /* Card hover effects with dark mode support */
+  .card-hover {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Section patterns with dark mode support */
+  .section-pattern {
+    background-color: #f8fafc;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563eb' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .dark .section-pattern {
+    background-color: #0f172a;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Dark mode specific styles */
+  .dark .bg-card {
+    background-color: hsl(224, 71%, 4%);
+  }
+
+  .dark .text-gray-500 {
+    color: hsl(214, 32%, 91%);
+  }
+
+  .dark .text-gray-400 {
+    color: hsl(214, 32%, 91%);
+  }
+
+  /* Fix for navbar title */
+  .navbar-title {
+    padding-left: 4px;
+  }
+
+  /* Project category dropdown */
+  .project-dropdown {
+    position: relative;
+    width: 100%;
+    z-index: 50;
+    margin-bottom: 2rem;
+  }
+
+  .project-dropdown-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    border-radius: 0.5rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+  }
+
+  .dark .project-dropdown-button {
+    background-color: hsl(217.2, 32.6%, 17.5%);
+    color: hsl(210, 40%, 98%);
+    border-color: hsl(217.2, 32.6%, 17.5%);
+  }
+
+  .project-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+    overflow: hidden;
+  }
+
+  .dark .project-dropdown-menu {
+    background-color: hsl(222.2, 84%, 4.9%);
+    border-color: hsl(217.2, 32.6%, 17.5%);
+  }
+
+  .project-dropdown-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .project-dropdown-item:hover {
+    background-color: var(--secondary);
+  }
+
+  .dark .project-dropdown-item:hover {
+    background-color: hsl(217.2, 32.6%, 17.5%);
+  }
+
+  .project-dropdown-item.active {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .dark .project-dropdown-item.active {
+    background-color: hsl(217.2, 91.2%, 59.8%);
+    color: hsl(222.2, 47.4%, 11.2%);
+  }
+
+  /* Desktop project tabs */
+  .desktop-tabs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--secondary);
+  }
+
+  .desktop-tab {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .desktop-tab:hover {
+    background-color: var(--secondary);
+    opacity: 0.9;
+  }
+
+  .desktop-tab.active {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .dark .desktop-tabs {
+    background-color: hsl(217.2, 32.6%, 17.5%);
+  }
+
+  .dark .desktop-tab:hover {
+    background-color: hsl(217.2, 32.6%, 20%);
+  }
+
+  .dark .desktop-tab.active {
+    background-color: hsl(217.2, 91.2%, 59.8%);
+    color: hsl(222.2, 47.4%, 11.2%);
+  }
+}
