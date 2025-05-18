@@ -13,6 +13,7 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
+    // Keep optimizeCss enabled for better performance
     optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
   },
