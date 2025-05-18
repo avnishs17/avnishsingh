@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm install --no-save critters && next build",
+  "buildCommand": "node scripts/install-critters.js && next build",
   "installCommand": "pnpm install",
   "framework": "nextjs"
 }

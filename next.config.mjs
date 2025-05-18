@@ -13,8 +13,11 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    // Keep optimizeCss enabled for better performance
-    optimizeCss: true,
+    // Make optimizeCss more robust by adding a fallback
+    optimizeCss: process.env.NODE_ENV === 'production' ? {
+      // Add a fallback option to prevent build failures
+      fallback: true
+    } : false,
     optimizePackageImports: ['lucide-react'],
   },
   compiler: {
